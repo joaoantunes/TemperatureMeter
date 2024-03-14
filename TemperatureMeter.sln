@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Application", "TemperatureMeter.Application\TemperatureMeter.Application.csproj", "{043B7EF9-511C-4112-AED4-225B24470886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureMeter.Application", "TemperatureMeter.Application\TemperatureMeter.Application.csproj", "{043B7EF9-511C-4112-AED4-225B24470886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernel", "Kernel\Kernel.csproj", "{32241FF7-AE14-44D0-9B61-5FCF2EF98028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kernel", "Kernel\Kernel.csproj", "{32241FF7-AE14-44D0-9B61-5FCF2EF98028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Domain", "TemperatureMeter.Domain\TemperatureMeter.Domain.csproj", "{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureMeter.Domain", "TemperatureMeter.Domain\TemperatureMeter.Domain.csproj", "{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Api.Contracts", "TemperatureMeter.Api.Contracts\TemperatureMeter.Api.Contracts.csproj", "{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureMeter.Api.Contracts", "TemperatureMeter.Api.Contracts\TemperatureMeter.Api.Contracts.csproj", "{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "Messaging\Messaging.csproj", "{489D88AF-3196-46D7-8326-BE6279B83BEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messaging", "Messaging\Messaging.csproj", "{489D88AF-3196-46D7-8326-BE6279B83BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeterApi", "TemperatureMeterApi\TemperatureMeterApi.csproj", "{3E13E43A-AD43-48BA-8E28-607DD10D0711}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureMeterApi", "TemperatureMeterApi\TemperatureMeterApi.csproj", "{3E13E43A-AD43-48BA-8E28-607DD10D0711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeterSubscribers.ConsoleApp", "TemperatureMeterSubscribers.ConsoleApp\TemperatureMeterSubscribers.ConsoleApp.csproj", "{2B2F6B66-52DE-4581-8AA7-53992695D987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemperatureMeterSubscribers.ConsoleApp", "TemperatureMeterSubscribers.ConsoleApp\TemperatureMeterSubscribers.ConsoleApp.csproj", "{2B2F6B66-52DE-4581-8AA7-53992695D987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMonitor.ConsoleApp", "TemperatureMonitor\TemperatureMonitor.ConsoleApp.csproj", "{FF61B0B2-FA6C-44D6-9770-C0C22053FFCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF61B0B2-FA6C-44D6-9770-C0C22053FFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF61B0B2-FA6C-44D6-9770-C0C22053FFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF61B0B2-FA6C-44D6-9770-C0C22053FFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF61B0B2-FA6C-44D6-9770-C0C22053FFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

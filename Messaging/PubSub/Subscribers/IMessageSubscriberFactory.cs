@@ -2,7 +2,6 @@
 {
     public interface IMessageSubscriberFactory : IDisposable
     {
-
         IMessageSubscriber GetOrCreateMessageSubscriber(string hostName, int port, string channel); 
     }
 }

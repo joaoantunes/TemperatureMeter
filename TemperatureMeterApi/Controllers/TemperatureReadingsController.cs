@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TemperatureMeter.Api.Contracts.TemperatureReadings;
 using TemperatureMeter.Application.Commands;

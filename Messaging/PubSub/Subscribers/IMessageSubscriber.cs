@@ -4,8 +4,5 @@
     {
         Task StartAsync();
         Task StopAsync();
-
-        // TODO
-        //event EventHandler<MessageReceivedEventArgs> MessageReceived;
     }
 }

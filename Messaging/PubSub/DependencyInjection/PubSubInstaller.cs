@@ -1,11 +1,13 @@
 ﻿using Kernel.DependencyInjection;
 using Kernel.Messages;
+using MediatR;
 using Messaging.PubSub.Publishers;
 using Messaging.PubSub.Subscribers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
+using System.Reflection;
 using System.Threading.Channels;
 
 namespace Messaging.PubSub.DependencyInjection
@@ -14,15 +16,18 @@ namespace Messaging.PubSub.DependencyInjection
     {
         public void InstallServices(IConfiguration configuration, IServiceCollection services)
         {
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly())); // TODO check if needs to be here
             services.TryAddSingleton<IMqttClientFactory, MqttClientFactory>();
-            //services.TryAddSingleton<IMessagePublisher, MessagePublisher>();
-            //services.TryAddSingleton<IMessageSubscriber, MessageSubscriber>();
+           
             services.TryAddSingleton(c =>
             {
                 return new Func<string, int, string, MessageSubscriber>((host, port, channel) =>
-                    new MessageSubscriber(host, port, channel, c.GetRequiredService<IMqttClientFactory>(), c.GetServices<IBaseMessage>()));
+                    new MessageSubscriber(host, port, channel, c.GetRequiredService<IMqttClientFactory>(), c.GetRequiredService<IDispatcher>()));
             });
-            
+
+            //, c.GetRequiredService<IPublisher>()
+            //c.GetServices<IBaseNotification>()
+            services.TryAddTransient<IDispatcher, Dispatcher>();
 
             //services.TryAddSingleton<Func<string, int, string, MessageSubscriber>>(c =>
             //new Func<string, int, string, MessageSubscriber>((host, port, channel) =>

@@ -23,7 +23,6 @@ namespace Messaging.PubSub.Subscribers
              _messageSubscriberFunc = messageSubscriberFunc;
         }
 
-
         public void Dispose()
         {
             if (_disposed)

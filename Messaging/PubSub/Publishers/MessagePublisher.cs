@@ -23,37 +23,21 @@ namespace Messaging.PubSub.Publishers
         private async Task EnsureClientAsync()
         {
             //Mqtt Managed Client is supposed to manage connections and channels auto recovery
-            try
-            {
-                _client ??= await _clientFactory.GetOrCreateAsync(_hostName, _port);
-            }
-            catch (Exception ex)
-            {
-                //_logger.LogError(ex, $"Unexpected error while creating connection for '{_hostName}':{_port}.");
-                throw;
-            }
+            _client ??= await _clientFactory.GetOrCreateAsync(_hostName, _port);
         }
 
-        public async Task<bool> PublishAsync<T>(T payload, string topic) where T : BaseMessage
+        public async Task<bool> PublishAsync<T>(T payload, string topic) where T : BaseNotification
         {
             await EnsureClientAsync();
-            try
-            {
-                var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(payload); //TODO por isto numa classe como ISerializer
+            var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(payload); //TODO Add ISerializer
 
-                var message = new MqttApplicationMessageBuilder()
-                  .WithTopic(topic)
-                  .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtMostOnce)
-                  .WithPayload(payloadBytes)
-                  .Build();
+            var message = new MqttApplicationMessageBuilder()
+              .WithTopic(topic)
+              .WithQualityOfServiceLevel(MqttQualityOfServiceLevel.AtMostOnce)
+              .WithPayload(payloadBytes)
+              .Build();
 
-                await _client.EnqueueAsync(message);  
-            }
-            catch (Exception ex)
-            {
-                //_logger.LogWarning(ex, $"Failed to publish message to exchange '{topic}' on host {_hostName}\n");
-                return false;
-            }
+            await _client.EnqueueAsync(message);
             return true;
         }
 
