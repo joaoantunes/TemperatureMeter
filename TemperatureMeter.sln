@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Application", "TemperatureMeter.Application\TemperatureMeter.Application.csproj", "{043B7EF9-511C-4112-AED4-225B24470886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kernel", "Kernel\Kernel.csproj", "{32241FF7-AE14-44D0-9B61-5FCF2EF98028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Domain", "TemperatureMeter.Domain\TemperatureMeter.Domain.csproj", "{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeter.Api.Contracts", "TemperatureMeter.Api.Contracts\TemperatureMeter.Api.Contracts.csproj", "{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messaging", "Messaging\Messaging.csproj", "{489D88AF-3196-46D7-8326-BE6279B83BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeterApi", "TemperatureMeterApi\TemperatureMeterApi.csproj", "{3E13E43A-AD43-48BA-8E28-607DD10D0711}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMeterSubscribers.ConsoleApp", "TemperatureMeterSubscribers.ConsoleApp\TemperatureMeterSubscribers.ConsoleApp.csproj", "{2B2F6B66-52DE-4581-8AA7-53992695D987}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{043B7EF9-511C-4112-AED4-225B24470886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{043B7EF9-511C-4112-AED4-225B24470886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{043B7EF9-511C-4112-AED4-225B24470886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{043B7EF9-511C-4112-AED4-225B24470886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32241FF7-AE14-44D0-9B61-5FCF2EF98028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32241FF7-AE14-44D0-9B61-5FCF2EF98028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32241FF7-AE14-44D0-9B61-5FCF2EF98028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32241FF7-AE14-44D0-9B61-5FCF2EF98028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{647D8BDD-E888-4FA3-81E3-B2F3BDBA61DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA23BAA3-4088-48C3-BBA0-6491F945CE6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489D88AF-3196-46D7-8326-BE6279B83BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489D88AF-3196-46D7-8326-BE6279B83BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489D88AF-3196-46D7-8326-BE6279B83BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489D88AF-3196-46D7-8326-BE6279B83BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E13E43A-AD43-48BA-8E28-607DD10D0711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E13E43A-AD43-48BA-8E28-607DD10D0711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E13E43A-AD43-48BA-8E28-607DD10D0711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E13E43A-AD43-48BA-8E28-607DD10D0711}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B2F6B66-52DE-4581-8AA7-53992695D987}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95CE6F15-2F0E-40C7-B182-0DEA5440AFA1}
+	EndGlobalSection
+EndGlobal
