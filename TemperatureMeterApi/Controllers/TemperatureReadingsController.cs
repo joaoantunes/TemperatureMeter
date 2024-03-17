@@ -10,13 +10,9 @@ namespace TemperatureMeterApi.Controllers
         [HttpPost]
         public async Task<ActionResult<bool>> CreateReading(CreateTemperatureReadingCommandApi command, CancellationToken cancellationToken)
         {
-            // TODO mapping
-            // TODO validation
             var request = new CreateTemperatureReadingCommand() { TemperatureInKelvin = command.TemperatureInKelvin };
-            var response = await Mediator.Send(request, cancellationToken);
-            //var result = Mapper.Map<List<FontResponseApi>>(response);
-            bool result = true;
-            return Ok(result);
+            var response = await LazyMediator.Send(request, cancellationToken); // TODO improve error handling and responses
+            return Ok(response);
         }
     }
 }

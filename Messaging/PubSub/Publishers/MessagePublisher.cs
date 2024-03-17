@@ -8,28 +8,16 @@ namespace Messaging.PubSub.Publishers
 {
     internal class MessagePublisher : IMessagePublisher
     {
-        private readonly IMqttClientFactory _clientFactory;
-        private readonly string _hostName;
-        private readonly int _port;
-        private IManagedMqttClient? _client;
+        private readonly Lazy<IManagedMqttClient> LazyClient;
 
         public MessagePublisher(string hostName, int port, IMqttClientFactory clientFactory)
         {
-            _clientFactory = clientFactory;
-            _hostName = hostName;
-            _port = port;
-        }
-
-        private async Task EnsureClientAsync()
-        {
-            //Mqtt Managed Client is supposed to manage connections and channels auto recovery
-            _client ??= await _clientFactory.GetOrCreateAsync(_hostName, _port);
+            LazyClient = new Lazy<IManagedMqttClient>(() => clientFactory.GetOrCreateAsync(hostName, port).GetAwaiter().GetResult());
         }
 
         public async Task<bool> PublishAsync<T>(T payload, string topic) where T : BaseNotification
         {
-            await EnsureClientAsync();
-            var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(payload); //TODO Add ISerializer
+            var payloadBytes = JsonSerializer.SerializeToUtf8Bytes(payload);
 
             var message = new MqttApplicationMessageBuilder()
               .WithTopic(topic)
@@ -37,7 +25,7 @@ namespace Messaging.PubSub.Publishers
               .WithPayload(payloadBytes)
               .Build();
 
-            await _client.EnqueueAsync(message);
+            await LazyClient.Value.EnqueueAsync(message);
             return true;
         }
 

@@ -15,9 +15,13 @@ namespace TemperatureMeterSubscribers.ConsoleApp
 
         public Task Handle(TemperatureMeteringCreated notification, CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"NEW Reading => DeviceId: {notification.DeviceId} Temperature: {notification.TemperatureInCelcius}");
-
+            ShowNewMetering(notification);
             return Task.CompletedTask;
+        }
+
+        private void ShowNewMetering(TemperatureMeteringCreated notification)
+        {
+            _logger.LogInformation($"NEW Reading => DeviceId: {notification.DeviceId} Temperature: {notification.TemperatureInCelcius}");
         }
     }
 }

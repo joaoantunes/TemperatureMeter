@@ -1,4 +1,4 @@
-﻿namespace TemperatureMeter.Domain.Converter
+﻿namespace TemperatureMeter.Domain.Converters
 {
     public interface IKelvinToCelsiusConverter
     {

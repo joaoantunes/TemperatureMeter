@@ -16,20 +16,25 @@ namespace Messaging.PubSub.Subscribers
             _availableMessagesContracts = availableMessagesContracts;
         }
 
-        public Task DispatchAsync(MqttApplicationMessage newMessage)
+        public async Task DispatchAsync(MqttApplicationMessage newMessage)
         {
             var baseMessage = JsonSerializer.Deserialize<BaseNotification>(newMessage.PayloadSegment);
+            if (baseMessage == default || baseMessage.TypeContract == typeof(BaseNotification).FullName)
+            {
+                throw new ArgumentException("Message to be dispatched MUST Inherit from BaseNotification Type.");
+            }
 
-            IBaseNotification availableContract = _availableMessagesContracts.SingleOrDefault(x => x.Type.Equals(baseMessage.Type));
-
+            IBaseNotification? availableContract = _availableMessagesContracts.SingleOrDefault(x => x.TypeContract.Equals(baseMessage.TypeContract));
             if (availableContract == default)
             {
-                throw new TypeLoadException($"Missing contract message for {baseMessage.Type}. Please verify that AddMessagesContracts were added on the right Assembly");           
+                throw new TypeLoadException($"Missing contract message for {baseMessage.TypeContract}. Please verify that AddMessagesContracts were added on the right Assembly");
             }
 
             var messageType = availableContract.GetType();
-            var newNotification = JsonSerializer.Deserialize(newMessage.PayloadSegment, messageType);
-            return _mediator.Publish(newNotification);
+            var newNotification = JsonSerializer.Deserialize(newMessage.PayloadSegment, messageType)
+                ?? throw new JsonException($"Unable to deserialize payload to messageType: '{messageType}'");
+
+            await _mediator.Publish(newNotification);
         }
     }
 }

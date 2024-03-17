@@ -8,6 +8,6 @@ namespace TemperatureMeterApi.Controllers
     public abstract class ApiControllerBase : ControllerBase
     {
         private ISender? _mediator;
-        protected ISender? Mediator => _mediator ??= HttpContext.RequestServices.GetService<ISender?>();
+        protected ISender LazyMediator => _mediator ??= HttpContext.RequestServices.GetService<ISender>() ?? throw new ArgumentNullException("ISender");
     }
 }

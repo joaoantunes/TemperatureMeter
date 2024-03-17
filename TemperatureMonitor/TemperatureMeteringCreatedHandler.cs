@@ -15,16 +15,21 @@ namespace TemperatureMonitor.ConsoleApp
 
         public Task Handle(TemperatureMeteringCreated notification, CancellationToken cancellationToken)
         {
+            AlterInExtremeSituations(notification);
+            return Task.CompletedTask;
+        }
+
+        private void AlterInExtremeSituations(TemperatureMeteringCreated notification)
+        {
             if (notification.TemperatureInCelcius > 75)
             {
                 _logger.LogCritical($"ALERT OVERHEATING DEVICE => DeviceId: {notification.DeviceId} Temperature: {notification.TemperatureInCelcius}");
 
-            } else if (notification.TemperatureInCelcius < 0)
+            }
+            else if (notification.TemperatureInCelcius < 0)
             {
                 _logger.LogCritical($"ALERT FREEZING DEVICE => DeviceId: {notification.DeviceId} Temperature: {notification.TemperatureInCelcius}");
             }
-
-            return Task.CompletedTask;
         }
     }
 }

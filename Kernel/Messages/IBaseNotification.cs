@@ -4,6 +4,6 @@ namespace Kernel.Messages
 {
     public interface IBaseNotification : INotification
     {
-        string Type { get; set; }
+        string TypeContract { get; set; }
     }
 }

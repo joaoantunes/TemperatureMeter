@@ -6,7 +6,7 @@ namespace TemperatureMeterApi.DependencyInjection
     {
         public void InstallServices(IConfiguration configuration, IServiceCollection services)
         {
-            //services.AddAutoMapper(typeof(IFontsApiAssemblyMarker));
+            //Can add DI here
         }
 
         public int Order { get; } = -1;

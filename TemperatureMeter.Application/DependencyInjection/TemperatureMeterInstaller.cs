@@ -3,7 +3,7 @@ using Messaging.PubSub.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TemperatureMeter.Domain.Converter;
+using TemperatureMeter.Domain.Converters;
 
 namespace TemperatureMeter.Application.DependencyInjection
 {
@@ -17,10 +17,6 @@ namespace TemperatureMeter.Application.DependencyInjection
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
             services.AddTransient<IKelvinToCelsiusConverter, KelvinToCelsiusConverter>();
-            // TODO automapper
-            //services.AddAutoMapper(typeof(MappingProfile));
-            // TODO validators?
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
         }
     }
 }

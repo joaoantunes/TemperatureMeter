@@ -1,14 +1,10 @@
 ﻿using Kernel.DependencyInjection;
-using Kernel.Messages;
-using MediatR;
 using Messaging.PubSub.Publishers;
 using Messaging.PubSub.Subscribers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
 using System.Reflection;
-using System.Threading.Channels;
 
 namespace Messaging.PubSub.DependencyInjection
 {
@@ -25,14 +21,13 @@ namespace Messaging.PubSub.DependencyInjection
                     new MessageSubscriber(host, port, channel, c.GetRequiredService<IMqttClientFactory>(), c.GetRequiredService<IDispatcher>()));
             });
 
-            //, c.GetRequiredService<IPublisher>()
-            //c.GetServices<IBaseNotification>()
+            services.TryAddSingleton(c =>
+            {
+                return new Func<string, int, MessagePublisher>((host, port) =>
+                    new MessagePublisher(host, port, c.GetRequiredService<IMqttClientFactory>()));
+            });
+
             services.TryAddTransient<IDispatcher, Dispatcher>();
-
-            //services.TryAddSingleton<Func<string, int, string, MessageSubscriber>>(c =>
-            //new Func<string, int, string, MessageSubscriber>((host, port, channel) =>
-            //    new MessageSubscriber(host, port, channel, c.GetRequiredService<IMqttClientFactory>(), c.GetRequiredService<IEnumerable<BaseMessage>>())));
-
             services.TryAddSingleton<IMessagePublisherFactory, MessagePublisherFactory>();
             services.TryAddSingleton<IMessageSubscriberFactory, MessageSubscriberFactory>();
         }

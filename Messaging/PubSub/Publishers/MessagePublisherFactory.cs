@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 
 namespace Messaging.PubSub.Publishers
 {
@@ -7,19 +6,21 @@ namespace Messaging.PubSub.Publishers
     {
         private IDictionary<string, IMessagePublisher> MessagePublishers { get; }
         private readonly IMqttClientFactory _mqttClientFactory;
+        private readonly Func<string, int, MessagePublisher> _messagePublisherFunc;
 
         public IMessagePublisher GetOrCreateMessagePublisher(string hostName, int port)
         {
             var messagePublisherKey = $"{hostName.ToLower()}";
             if (!MessagePublishers.ContainsKey(messagePublisherKey))
-                MessagePublishers.Add(messagePublisherKey, new MessagePublisher(hostName, port, _mqttClientFactory));
+                MessagePublishers.Add(messagePublisherKey, _messagePublisherFunc(hostName, port));
 
             return MessagePublishers[messagePublisherKey];
         }
         
-        public MessagePublisherFactory(IMqttClientFactory mqttClientFactory)
+        public MessagePublisherFactory(IMqttClientFactory mqttClientFactory, Func<string, int, MessagePublisher> messagePublisherFunc)
         {
             _mqttClientFactory = mqttClientFactory;
+            _messagePublisherFunc = messagePublisherFunc;
             MessagePublishers = new ConcurrentDictionary<string, IMessagePublisher>();
         }
 

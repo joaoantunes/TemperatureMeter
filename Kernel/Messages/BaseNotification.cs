@@ -2,9 +2,9 @@
 {
     public class BaseNotification : IBaseNotification
     {
-        private string? type;
+        private string? typeContract;
 
-        public string Type { get => type ??= this.GetType().FullName ?? 
-                throw new ArgumentNullException("Not able to process Type FullName"); set => type = value; }
+        public string TypeContract { get => typeContract ??= this.GetType().FullName ?? 
+                throw new ArgumentNullException("Not able to process Type FullName"); set => typeContract = value; }
     }
 }
