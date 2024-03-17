@@ -6,7 +6,7 @@
 
 ### Solution
 
-This repository contains a solution for the backend engineering technical exercise from M-KOPA. The solution consists of five projects:
+This repository contains a solution for Technical Exercise (Publish/Subscribe pattern) from E-conomic (Visma(. The solution consists of the following projects:
 
 * `TemperatureMeter.Api`: The .NET API that is responsible for receiving the *input of data* (CreateTemperatureReadingCommandApi) to be published to the subscribers.
 * `TemperatureMeter.Api.Contracts`: A project that only contain the contracts of the API that can be shared for future SDK.
