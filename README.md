@@ -25,9 +25,9 @@ TODO add screenshots with examples
 
 ### Requirement to RUN 
 
-The pub-sub is using Message Broker that implements the MQTT protocol called Mosquitto. 
+The pub-sub is using lightweight Message Broker that implements the MQTT protocol called Mosquitto. 
 
-You can download it from here: https://mosquitto.org/download/
+In order to run this example you need to install it, it can be download from here: https://mosquitto.org/download/
 
 ### What I would do if I more time was invested
 * Improved Error Handling and how is returned response on API.
