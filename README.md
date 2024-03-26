@@ -22,15 +22,15 @@ The solution is based on the principles of *Clean Architecture* and consists of 
 * `TemperatureMonitor.ConsoleApp`: A Console Application that subscribes to *TemperatureMeteringCreated* events and displays them on the console window only if the temperatures are too low.
 
 ### How the Flow Works:
-Data Ingestion: Temperature readings are sent to TemperatureMeter.Api by posting CreateTemperatureReadingCommandApi
+**Data Ingestion:** Temperature readings are sent to TemperatureMeter.Api by posting CreateTemperatureReadingCommandApi
 
-API Processing: TemperatureMeter.Api processes the incoming temperature readings, likely validating and formatting them before passing them on.
+**API Processing:** TemperatureMeter.Api processes the incoming temperature readings, likely validating and formatting them before passing them on.
 
-Publishing: Once validated, the temperature readings are published using the messaging library (Messaging). This library handles the communication with the message broker (Mosquitto) and publishes the readings as events.
+**Publishing:** Once validated, the temperature readings are published using the messaging library (Messaging). This library handles the communication with the message broker (Mosquitto) and publishes the readings as events.
 
-Subscription: Applications interested in temperature readings subscribe to these events. TemperatureMeterSubscribers.ConsoleApp and TemperatureMonitor.ConsoleApp are two such subscribers in this solution.
+**Subscription:** Applications interested in temperature readings subscribe to these events. TemperatureMeterSubscribers.ConsoleApp and TemperatureMonitor.ConsoleApp are two such subscribers in this solution.
 
-Event Handling: When a temperature reading event is received, the subscribing applications handle it according to their logic. TemperatureMeterSubscribers.ConsoleApp simply displays all readings, while TemperatureMonitor.ConsoleApp filters readings and displays only those that are too low.
+**Event Handling:** When a temperature reading event is received, the subscribing applications handle it according to their logic. TemperatureMeterSubscribers.ConsoleApp simply displays all readings, while TemperatureMonitor.ConsoleApp filters readings and displays only those that are too low.
 
 ### Requirement to RUN 
 
